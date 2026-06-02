@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy TAP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .neon-green { color: #00ff9d; text-shadow: 0 0 15px #00ff9d; }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10,10,10,0.95);
+            padding: 12px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            border-bottom: 1px solid #00ff9d;
+        }
+        
+        .logo { height: 50px; }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: -1;
+        }
+        
+        .content { z-index: 2; padding: 20px; }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            margin: 0;
+        }
+        
+        .tagline {
+            font-size: 1.6rem;
+            margin: 20px 0 40px;
+        }
+        
+        .btn, .whatsapp-btn {
+            background: #00ff9d;
+            color: #000;
+            padding: 16px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .flyer-img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0,255,157,0.5);
+            margin: 30px auto;
+        }
+
+        /* Carrusel de Negocios */
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel img {
+            min-width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.7);
+            color: #00ff9d;
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        
+        .prev { left: 15px; }
+        .next { right: 15px; }
+
+        /* Logos de Clientes - CORREGIDO */
+        .clients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .client-logo {
+            height: 100px;
+            transition: all 0.3s;
+            padding: 10px;
+        }
+        
+        .client-logo:hover {
+            transform: scale(1.12);
+            filter: drop-shadow(0 0 20px #00ff9d);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Easy TAP" class="logo">
+        <h2 class="neon-green"></h2>
+    </header>
+
+    <!-- Hero con fondo fon.mp4 -->
+    <section class="hero">
+        <video autoplay loop muted playsinline>
+            <source src="fon.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        
+        <div class="content">
+            <h1 class="neon-green">Easy TAP</h1>
+            <p class="tagline">Digitalizate con NFC Y IA</p>
+            <button class="btn" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">
+                Ver Productos
+            </button>
+            <button class="whatsapp-btn" onclick="window.open('https://wa.me/528719676251?text=Hola%20EASYTAP%20quiero%20información', '_blank')">
+                Contactar por WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- Flyer -->
+    <section class="section" id="productos">
+        <h2 class="neon-green">Nuestro Flyer</h2>
+        <img src="flyer.png" alt="Easy TAP" class="flyer-img">
+    </section>
+
+    <!-- Video Demo -->
+    <section class="section" style="background:#111;">
+        <h2 class="neon-green">Cómo funciona</h2>
+        <video class="flyer-img" controls autoplay loop muted>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- Negocios Afiliados -->
+    <section class="section" style="background:#0a0a0a;">
+        <h2 class="neon-green">Negocios que ya confían en Easy TAP</h2>
+        <p style="max-width:700px; margin:20px auto; font-size:1.2rem;">
+            Restaurantes y cafeterías que han modernizado su servicio con nuestra tecnología
+        </p>
+        
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">‹</button>
+            <div class="carousel" id="carousel">
+                <img src="nego1.png" alt="Negocio 1">
+                <img src="nego2.png" alt="Negocio 2">
+                <img src="nego3.png" alt="Negocio 3">
+                <img src="nego4.png" alt="Negocio 4">
+                <img src="nego5.png" alt="Negocio 5">
+                <img src="nego6.png" alt="Negocio 6">
+            </div>
+            <button class="carousel-btn next" onclick="moveSlide(1)">›</button>
+        </div>
+    </section>
+
+    <!-- Logos de Clientes -->
+    <section class="section" style="background:#111;">
+        <h2 class="neon-green">Nuestros Clientes</h2>
+        <p style="max-width:600px; margin:20px auto;">Empresas y restaurantes que ya están usando Easy TAP</p>
+        
+        <div class="clients-grid">
+            <img src="log1.png" alt="Cliente 1" class="client-logo">
+            <img src="log2.png" alt="Cliente 2" class="client-logo">
+            <img src="log3.png" alt="Cliente 3" class="client-logo">
+            <img src="log4.png" alt="Cliente 4" class="client-logo">
+            <img src="log5.png" alt="Cliente 5" class="client-logo">
+            <img src="log6.png" alt="Cliente 6" class="client-logo">
+        </div>
+    </section>
+
+    <!-- Paquetes -->
+    <section class="section" style="background:#0a0a0a;">
+        <h2 class="neon-green">Paquetes Disponibles</h2>
+        
+        <div style="max-width: 420px; margin: 40px auto; display: flex; flex-direction: column; gap: 25px;">
+            <div style="background:rgba(255,255,255,0.05); border:2px solid #00ff9d; border-radius:15px; padding:25px;">
+                <h3>PAQUETE INNOVADOR</h3>
+                <p><strong>40 Tarjetas NFC</strong></p>
+                <p><strong>1 Página Web Perzonalizada</strong></p>
+                <p><strong>Base de acrilico</strong></p>
+                <p style="font-size:1.7rem; margin:15px 0;">$3,500 + $500/mes</p>
+                <button class="whatsapp-btn" onclick="window.open('https://wa.me/528719676251?text=Quiero%20el%20Paquete%20Innovador', '_blank')">
+                    Adquirir Innovador
+                </button>
+            </div>
+            
+            <div style="background:rgba(255,255,255,0.05); border:2px solid #00ff9d; border-radius:15px; padding:25px;">
+                <h3>PAQUETE FUTURISTA</h3>
+                <p><strong>80 Tarjetas NFC</strong></p>
+                <p><strong>1 Página Web Perzonalizada</strong></p>
+                <p><strong>Base de acrilico</strong></p>
+                <p style="font-size:1.7rem; margin:15px 0;">$5,500 + $500/mes</p>
+                <button class="whatsapp-btn" onclick="window.open('https://wa.me/528719676251?text=Quiero%20el%20Paquete%20Futurista', '_blank')">
+                    Adquirir Futurista
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Easy TAP</strong> • Tecnología NFC para Restaurantes y Negocios</p>
+        <p class="neon-green">El futuro de tu negocio empieza con un simple TAP</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const carousel = document.getElementById('carousel');
+        const totalSlides = 6;
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
+</body>
+</html>
