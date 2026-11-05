@@ -1,294 +1,711 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy TAP</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-        }
-        
-        .neon-green { color: #00ff9d; text-shadow: 0 0 15px #00ff9d; }
-        
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10,10,10,0.95);
-            padding: 12px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 100;
-            border-bottom: 1px solid #00ff9d;
-        }
-        
-        .logo { height: 50px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Easy TAP | Inteligencia artificial, punto de venta y NFC para negocios en Torreón</title>
+  <meta name="description" content="Empresa de tecnología en Torreón, Coahuila. Creamos atención con IA para llamadas y WhatsApp, punto de venta, menús con NFC y QR, páginas web, apps y agendas a la medida de tu negocio.">
+  <meta name="theme-color" content="#050806">
+  <meta name="geo.region" content="MX-COA">
+  <meta name="geo.placename" content="Torreón, Coahuila">
 
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        
-        .hero video {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: -1;
-        }
-        
-        .content { z-index: 2; padding: 20px; }
-        
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            margin: 0;
-        }
-        
-        .tagline {
-            font-size: 1.6rem;
-            margin: 20px 0 40px;
-        }
-        
-        .btn, .whatsapp-btn {
-            background: #00ff9d;
-            color: #000;
-            padding: 16px 40px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 10px;
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-        }
-        
-        .section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-        
-        .flyer-img {
-            width: 100%;
-            max-width: 800px;
-            border-radius: 15px;
-            box-shadow: 0 0 40px rgba(0,255,157,0.5);
-            margin: 30px auto;
-        }
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="Easy TAP">
+  <meta property="og:title" content="Easy TAP | Tecnología a la medida para tu negocio">
+  <meta property="og:description" content="Atención con IA, punto de venta, menús con NFC y QR, web y apps. Empresa de Torreón, Coahuila.">
+  <meta property="og:image" content="assets/img/ui/og-easytap.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
-        /* Carrusel de Negocios */
-        .carousel-container {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-        
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .carousel img {
-            min-width: 100%;
-            height: 420px;
-            object-fit: cover;
-        }
-        
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.7);
-            color: #00ff9d;
-            border: none;
-            width: 50px;
-            height: 50px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 10;
-        }
-        
-        .prev { left: 15px; }
-        .next { right: 15px; }
+  <link rel="icon" href="assets/img/ui/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/ui/apple-touch-icon.png">
 
-        /* Logos de Clientes - CORREGIDO */
-        .clients-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 50px;
-            max-width: 1000px;
-            margin: 40px auto;
-        }
-        
-        .client-logo {
-            height: 100px;
-            transition: all 0.3s;
-            padding: 10px;
-        }
-        
-        .client-logo:hover {
-            transform: scale(1.12);
-            filter: drop-shadow(0 0 20px #00ff9d);
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            background: #000;
-        }
-    </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Easy TAP",
+    "description": "Empresa de tecnología: atención con inteligencia artificial, punto de venta, menús con NFC y QR, páginas web, aplicaciones y agendas a la medida.",
+    "telephone": "+52 871 967 6251",
+    "image": "assets/img/ui/og-easytap.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Torreón",
+      "addressRegion": "Coahuila",
+      "addressCountry": "MX"
+    },
+    "areaServed": ["Torreón", "Gómez Palacio", "Lerdo", "México"]
+  }
+  </script>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Easy TAP" class="logo">
-        <h2 class="neon-green"></h2>
-    </header>
 
-    <!-- Hero con fondo fon.mp4 -->
-    <section class="hero">
-        <video autoplay loop muted playsinline>
-            <source src="fon.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-        
-        <div class="content">
-            <h1 class="neon-green">Easy TAP</h1>
-            <p class="tagline">Digitalizate con NFC Y IA</p>
-            <button class="btn" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">
-                Ver Productos
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h2.6l1.5 4-2 1.6a12 12 0 0 0 6.300 6.300l1.600-2 4 1.500v2.600a2 2 0 0 1-2.200 2A16.500 16.500 0 0 1 4.500 5.700a2 2 0 0 1 2-2.200z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.800 5.200L18 10l-5.200 1.800L11 17l-1.800-5.200L4 10l5.200-1.800zM18.500 15.500l.8 2.200 2.200.8-2.200.8-.8 2.200-.8-2.200-2.200-.8 2.200-.8z"/></symbol>
+    <symbol id="i-pos" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4M7 8.500h6M7 11.500h3.500"/></symbol>
+    <symbol id="i-menu-doc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.700 2.700 4 5.700 4 9s-1.300 6.300-4 9c-2.700-2.700-4-5.700-4-9s1.300-6.300 4-9z"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="7" y="2.500" width="10" height="19" rx="2.500"/><path d="M11 18.500h2"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.500" y="5" width="17" height="15.500" rx="2"/><path d="M3.500 10h17M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/></symbol>
+    <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M9.500 4.500a2.500 2.500 0 0 1 5 0V6H19a1 1 0 0 1 1 1v4h-1.500a2.500 2.500 0 0 0 0 5H20v4a1 1 0 0 1-1 1h-4.500v-1.500a2.500 2.500 0 0 0-5 0V21H5a1 1 0 0 1-1-1v-4.500h1.500a2.500 2.500 0 0 0 0-5H4V7a1 1 0 0 1 1-1h4.500z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.500 2.800v5.700c0 4.500-3 8-7.500 9.500-4.500-1.500-7.500-5-7.500-9.500V5.800z"/><path d="M8.800 12l2.300 2.300 4.200-4.400"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><rect x="3" y="4.500" width="18" height="15" rx="2"/><path d="M9.500 9.500L7 12l2.500 2.500M14.500 9.500L17 12l-2.500 2.500"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.500" width="14" height="10" rx="2"/><path d="M8 10.500V7.500a4 4 0 0 1 8 0v3M12 14.500v2"/></symbol>
+    <symbol id="i-support" viewBox="0 0 24 24"><path d="M4.500 14v-2a7.500 7.500 0 0 1 15 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.500"/><rect x="17" y="13" width="4" height="6" rx="1.500"/><path d="M19 19c0 1.500-1.500 2.500-4 2.500h-1.500"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.500s7-6.300 7-11.500a7 7 0 1 0-14 0c0 5.200 7 11.500 7 11.500z"/><circle cx="12" cy="10" r="2.500"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.500v5h3.500L12 18.500v-13L7.500 9.500zM15.500 9a4 4 0 0 1 0 6M18 6.500a8 8 0 0 1 0 11"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-bars" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.600-5.900M4 4.500v4.200h4.200"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header" id="top">
+  <div class="wrap site-header__in">
+    <a class="brand" href="#top" aria-label="Easy TAP, ir al inicio">
+      <img src="assets/img/ui/logo-easytap.webp" alt="Easy TAP" width="128" height="74">
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#ia">Atención con IA</a>
+      <a href="#servicios">Soluciones</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a class="btn btn--sm" href="#diagnostico">Cotizar proyecto</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+      <svg class="ic"><use href="#i-bars"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <canvas class="hero__field" id="field" aria-hidden="true"></canvas>
+    <div class="wrap hero__in">
+      <p class="tag">Empresa de tecnología · Torreón, Coahuila</p>
+      <h1>El futuro de tu negocio empieza con un <em>simple TAP.</em></h1>
+
+      <div class="hero__row">
+        <div class="hero__copy">
+          <p class="lead">Creamos sistemas a la medida: atención con inteligencia artificial, punto de venta, menús con NFC y QR, páginas web y apps. Tú lo imaginas, nosotros lo hacemos realidad.</p>
+          <div class="actions">
+            <a class="btn" href="#diagnostico">Cuéntanos de tu negocio <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost" href="#proyectos">Ver proyectos reales</a>
+          </div>
+          <ul class="hero__facts">
+            <li><svg class="ic"><use href="#i-check"/></svg>Cotización sin compromiso</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Sistemas 100% nuevos</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Soporte y asesoría</li>
+          </ul>
+        </div>
+
+        <figure class="screen" id="demo">
+          <div class="screen__bar">
+            <span class="screen__dot"></span>
+            <span>Cómo funciona · 40 s</span>
+          </div>
+          <div class="screen__media">
+            <video id="heroVideo" muted loop playsinline preload="metadata" poster="assets/video/poster.webp" aria-label="Video: cómo funciona la atención con inteligencia artificial y el punto de venta de Easy TAP">
+              <source src="assets/video/easytap-demo.mp4" type="video/mp4">
+            </video>
+            <button class="screen__sound" id="soundBtn" type="button">
+              <svg class="ic"><use href="#i-sound"/></svg><span>Ver con sonido</span>
             </button>
-            <button class="whatsapp-btn" onclick="window.open('https://wa.me/528719676251?text=Hola%20EASYTAP%20quiero%20información', '_blank')">
-                Contactar por WhatsApp
-            </button>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPRESAS -->
+  <section class="clients" id="empresas" aria-labelledby="clients-title">
+    <div class="wrap clients__head">
+      <h2 class="clients__title" id="clients-title">Ya son parte de Easy TAP</h2>
+      <p>Restaurantes, bares, panaderías, belleza, perfumería y más negocios de la región.</p>
+    </div>
+    <div class="marquee" data-marquee>
+      <ul class="marquee__track">
+        <li><img src="assets/img/logos/el-camaron-culichi.webp" alt="El Camarón Culichi" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/shoku.webp" alt="Shoku Sushi Bar" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/le-smash.webp" alt="Le Smash" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/muelle-817.webp" alt="Muelle 817" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/canirac-laguna.webp" alt="CANIRAC Laguna" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/shells-bread.webp" alt="Shell's Bread, pan de masa madre" width="480" height="300" loading="lazy"></li>
+      </ul>
+    </div>
+    <div class="marquee marquee--rev" data-marquee>
+      <ul class="marquee__track">
+        <li><img src="assets/img/logos/distrito-michelado.webp" alt="Distrito Michelado" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/pekes-burger.webp" alt="Peke's Burger" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/human-prime-lab.webp" alt="Human Prime Lab" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/mariscos-las-glorias.webp" alt="Mariscos Las Glorias" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/lume-beauty-room.webp" alt="Lumé Beauty Room" width="480" height="300" loading="lazy"></li>
+        <li><img src="assets/img/logos/saja-perfumes.webp" alt="Saja Perfumes" width="480" height="300" loading="lazy"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROBLEMAS -->
+  <section class="section" id="retos" aria-labelledby="retos-title">
+    <div class="wrap">
+      <p class="tag reveal">¿Te pasa?</p>
+      <h2 class="reveal" id="retos-title">Lo que hoy le cuesta ventas a tu negocio, la tecnología ya lo resuelve.</h2>
+      <div class="fixes" role="table" aria-label="Problemas comunes y cómo los resolvemos">
+        <div class="fixes__head" role="row">
+          <span role="columnheader">Hoy en tu negocio</span>
+          <span role="columnheader">Lo que construimos</span>
         </div>
-    </section>
+        <div class="fix reveal" role="row">
+          <p role="cell">Estás en cocina, suena el teléfono y nadie contesta.</p>
+          <p role="cell"><svg class="ic"><use href="#i-spark"/></svg><span><b>Atención con IA</b> que responde llamadas y WhatsApp, y toma los pedidos.</span></p>
+        </div>
+        <div class="fix reveal" role="row">
+          <p role="cell">Pedidos en papel y comandas que se pierden o salen mal.</p>
+          <p role="cell"><svg class="ic"><use href="#i-pos"/></svg><span><b>Punto de venta</b> que imprime la comanda de cocina y el ticket de caja.</span></p>
+        </div>
+        <div class="fix reveal" role="row">
+          <p role="cell">Cambiar un precio significa reimprimir todo el menú.</p>
+          <p role="cell"><svg class="ic"><use href="#i-menu-doc"/></svg><span><b>Menú digital</b> con QR y NFC que actualizas al instante.</span></p>
+        </div>
+        <div class="fix reveal" role="row">
+          <p role="cell">Te buscan en internet y no encuentran tu negocio.</p>
+          <p role="cell"><svg class="ic"><use href="#i-globe"/></svg><span><b>Página web</b> personalizada, rápida y adaptable a cualquier dispositivo.</span></p>
+        </div>
+        <div class="fix reveal" role="row">
+          <p role="cell">Citas y reservas en una libreta o perdidas en los chats.</p>
+          <p role="cell"><svg class="ic"><use href="#i-cal"/></svg><span><b>Agenda</b> con citas, reservas y gestión de horarios.</span></p>
+        </div>
+        <div class="fix reveal" role="row">
+          <p role="cell">Ventas e inventario de memoria o en un Excel.</p>
+          <p role="cell"><svg class="ic"><use href="#i-code"/></svg><span><b>Sistema a tu medida</b> con ventas, inventario y reportes.</span></p>
+        </div>
+      </div>
+      <p class="fixes__more reveal">¿Tu problema no está aquí? <a href="#diagnostico">Cuéntanoslo <svg class="ic"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </section>
 
-    <!-- Flyer -->
-    <section class="section" id="productos">
-        <h2 class="neon-green">Nuestro Flyer</h2>
-        <img src="flyer.png" alt="Easy TAP" class="flyer-img">
-    </section>
+  <!-- IA -->
+  <section class="section ia" id="ia" aria-labelledby="ia-title">
+    <div class="wrap ia__grid">
+      <div class="ia__copy">
+        <p class="tag reveal">Atención con IA</p>
+        <h2 class="reveal" id="ia-title">Cada llamada o WhatsApp sin contestar es una venta menos.</h2>
+        <p class="reveal">Nuestra inteligencia artificial atiende por ti: responde, toma el pedido y lo manda directo al punto de venta. La comanda se imprime en cocina y el ticket en caja, sin que nadie deje lo que está haciendo.</p>
+        <ul class="flow reveal" id="iaFlow" aria-label="Recorrido de un pedido">
+          <li data-node="0"><svg class="ic"><use href="#i-phone"/></svg>Llamada o WhatsApp</li>
+          <li data-node="1"><svg class="ic"><use href="#i-spark"/></svg>La IA toma el pedido</li>
+          <li data-node="2"><svg class="ic"><use href="#i-pos"/></svg>Llega al punto de venta</li>
+          <li data-node="3"><svg class="ic"><use href="#i-menu-doc"/></svg>Se imprime la comanda</li>
+        </ul>
+        <a class="btn btn--ghost reveal" href="#diagnostico">Lo quiero en mi negocio <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
 
-    <!-- Video Demo -->
-    <section class="section" style="background:#111;">
-        <h2 class="neon-green">Cómo funciona</h2>
-        <video class="flyer-img" controls autoplay loop muted>
-            <source src="video.mp4" type="video/mp4">
-        </video>
-    </section>
-
-    <!-- Negocios Afiliados -->
-    <section class="section" style="background:#0a0a0a;">
-        <h2 class="neon-green">Negocios que ya confían en Easy TAP</h2>
-        <p style="max-width:700px; margin:20px auto; font-size:1.2rem;">
-            Restaurantes y cafeterías que han modernizado su servicio con nuestra tecnología
-        </p>
-        
-        <div class="carousel-container">
-            <button class="carousel-btn prev" onclick="moveSlide(-1)">‹</button>
-            <div class="carousel" id="carousel">
-                <img src="nego1.png" alt="Negocio 1">
-                <img src="nego2.png" alt="Negocio 2">
-                <img src="nego3.png" alt="Negocio 3">
-                <img src="nego4.png" alt="Negocio 4">
-                <img src="nego5.png" alt="Negocio 5">
-                <img src="nego6.png" alt="Negocio 6">
+      <div class="sim reveal" id="iaSim">
+        <div class="sim__top">
+          <span class="sim__label">Simulación de ejemplo</span>
+          <button class="sim__replay" id="simReplay" type="button"><svg class="ic"><use href="#i-replay"/></svg>Repetir</button>
+        </div>
+        <div class="sim__stage">
+          <div class="chat" aria-hidden="true">
+            <div class="chat__head">
+              <span class="chat__ava">A</span>
+              <span><b>Ana</b><small id="chatStatus">en línea</small></span>
             </div>
-            <button class="carousel-btn next" onclick="moveSlide(1)">›</button>
-        </div>
-    </section>
-
-    <!-- Logos de Clientes -->
-    <section class="section" style="background:#111;">
-        <h2 class="neon-green">Nuestros Clientes</h2>
-        <p style="max-width:600px; margin:20px auto;">Empresas y restaurantes que ya están usando Easy TAP</p>
-        
-        <div class="clients-grid">
-            <img src="log1.png" alt="Cliente 1" class="client-logo">
-            <img src="log2.png" alt="Cliente 2" class="client-logo">
-            <img src="log3.png" alt="Cliente 3" class="client-logo">
-            <img src="log4.png" alt="Cliente 4" class="client-logo">
-            <img src="log5.png" alt="Cliente 5" class="client-logo">
-            <img src="log6.png" alt="Cliente 6" class="client-logo">
-        </div>
-    </section>
-
-    <!-- Paquetes -->
-    <section class="section" style="background:#0a0a0a;">
-        <h2 class="neon-green">Paquetes Disponibles</h2>
-        
-        <div style="max-width: 420px; margin: 40px auto; display: flex; flex-direction: column; gap: 25px;">
-            <div style="background:rgba(255,255,255,0.05); border:2px solid #00ff9d; border-radius:15px; padding:25px;">
-                <h3>PAQUETE INNOVADOR</h3>
-                <p><strong>40 Tarjetas NFC</strong></p>
-                <p><strong>1 Página Web Perzonalizada</strong></p>
-                <p><strong>Base de acrilico</strong></p>
-                <p style="font-size:1.7rem; margin:15px 0;">$4,500 + $500/mes</p>
-                <button class="whatsapp-btn" onclick="window.open('https://wa.me/528719676251?text=Quiero%20el%20Paquete%20Innovador', '_blank')">
-                    Adquirir Innovador
-                </button>
+            <div class="chat__body" id="chatBody"></div>
+          </div>
+          <div class="sim__side" aria-hidden="true">
+            <div class="callcard" id="callCard">
+              <svg class="ic"><use href="#i-phone"/></svg>
+              <span><b>Llamada entrante</b><small>La IA está atendiendo</small></span>
+              <i class="wave"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u></i>
             </div>
-            
-            <div style="background:rgba(255,255,255,0.05); border:2px solid #00ff9d; border-radius:15px; padding:25px;">
-                <h3>PAQUETE FUTURISTA</h3>
-                <p><strong>80 Tarjetas NFC</strong></p>
-                <p><strong>1 Página Web Perzonalizada</strong></p>
-                <p><strong>Base de acrilico</strong></p>
-                <p style="font-size:1.7rem; margin:15px 0;">$6,500 + $500/mes</p>
-                <button class="whatsapp-btn" onclick="window.open('https://wa.me/528719676251?text=Quiero%20el%20Paquete%20Futurista', '_blank')">
-                    Adquirir Futurista
-                </button>
+            <div class="printer">
+              <div class="printer__slot"></div>
+              <div class="ticket" id="ticket">
+                <b>COMANDA · COCINA</b>
+                <span>Pedido para Ana</span>
+                <hr>
+                <span>1 Gringa ranchera</span>
+                <small>Arrachera, sin queso</small>
+                <span>1 Coca Cola Zero</span>
+                <hr>
+                <small>Enviado por el asistente IA</small>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+        <p class="visually-hidden">Ejemplo: una clienta pide una gringa ranchera y una Coca Cola Zero por chat; la IA confirma el pedido, lo manda al punto de venta y se imprime la comanda.</p>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p><strong>Easy TAP</strong> • Tecnología NFC para Restaurantes y Negocios</p>
-        <p class="neon-green">El futuro de tu negocio empieza con un simple TAP</p>
-    </footer>
+  <!-- NFC -->
+  <section class="section nfc" id="nfc" aria-labelledby="nfc-title">
+    <div class="wrap nfc__grid">
+      <div class="nfc__visual reveal">
+        <i class="rings"><u></u><u></u><u></u></i>
+        <img src="assets/img/ui/mano-telefono.webp" width="392" height="410" alt="Cliente con el menú digital de un restaurante abierto en su celular" loading="lazy">
+      </div>
+      <div>
+        <p class="tag reveal">Tecnología NFC y QR</p>
+        <h2 class="reveal" id="nfc-title">Un TAP y tu cliente ya está dentro.</h2>
+        <ol class="steps">
+          <li class="reveal"><span>1</span><div><h3>Acerca su celular</h3><p>A la tarjeta NFC de tu mesa, o escanea el código QR.</p></div></li>
+          <li class="reveal"><span>2</span><div><h3>Se abre tu página</h3><p>Menú, Wi-Fi, redes sociales y reseñas de Google, en un solo lugar.</p></div></li>
+          <li class="reveal"><span>3</span><div><h3>Tú lo actualizas</h3><p>Cambias precios y platillos al instante, sin volver a imprimir.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        let currentSlide = 0;
-        const carousel = document.getElementById('carousel');
-        const totalSlides = 6;
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios" aria-labelledby="serv-title">
+    <div class="wrap">
+      <p class="tag reveal">Soluciones</p>
+      <h2 class="reveal" id="serv-title">Todo lo que tu negocio necesita, nosotros lo creamos.</h2>
+      <div class="bento">
+        <article class="cell cell--wide reveal">
+          <div>
+            <svg class="ic ic--lg"><use href="#i-pos"/></svg>
+            <h3>Punto de venta</h3>
+            <p>Ventas, inventario y reportes. No es un sistema genérico: se configura según tu menú, tus reglas y tu forma de trabajar.</p>
+          </div>
+          <img src="assets/img/ui/pos-crop.webp" alt="Pantalla de configuración de un punto de venta creado por Easy TAP" width="620" height="540" loading="lazy">
+        </article>
+        <article class="cell reveal">
+          <svg class="ic ic--lg"><use href="#i-spark"/></svg>
+          <h3>Atención con IA</h3>
+          <p>Contesta llamadas y WhatsApp, y toma pedidos mientras tú atiendes tu negocio.</p>
+        </article>
+        <article class="cell reveal">
+          <svg class="ic ic--lg"><use href="#i-menu-doc"/></svg>
+          <h3>Menús digitales</h3>
+          <p>Interactivos, con QR, NFC, imágenes y actualización al instante.</p>
+        </article>
+        <article class="cell reveal">
+          <svg class="ic ic--lg"><use href="#i-globe"/></svg>
+          <h3>Páginas web</h3>
+          <p>Sitios modernos, rápidos y adaptables a cualquier dispositivo.</p>
+        </article>
+        <article class="cell reveal">
+          <svg class="ic ic--lg"><use href="#i-mobile"/></svg>
+          <h3>Aplicaciones</h3>
+          <p>Apps móviles para Android e iOS, hechas desde cero para tu operación.</p>
+        </article>
+        <article class="cell cell--wide cell--flip reveal">
+          <img src="assets/img/ui/agenda-crop.webp" alt="Calendario para agendar citas y visitas" width="516" height="368" loading="lazy">
+          <div>
+            <svg class="ic ic--lg"><use href="#i-cal"/></svg>
+            <h3>Agendas</h3>
+            <p>Sistemas de citas, reservas y gestión de horarios para que tu día no dependa de una libreta.</p>
+          </div>
+        </article>
+        <article class="cell cell--accent reveal">
+          <svg class="ic ic--lg"><use href="#i-puzzle"/></svg>
+          <h3>Y todo lo que imagines</h3>
+          <p>Si lo puedes imaginar, nosotros lo podemos desarrollar.</p>
+          <a href="#diagnostico">Cuéntanos tu idea <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        function moveSlide(direction) {
-            currentSlide += direction;
-            if (currentSlide >= totalSlides) currentSlide = 0;
-            if (currentSlide < 0) currentSlide = totalSlides - 1;
-            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-    </script>
+  <!-- PROYECTOS -->
+  <section class="section" id="proyectos" aria-labelledby="proy-title">
+    <div class="wrap">
+      <p class="tag reveal">Proyectos</p>
+      <h2 class="reveal" id="proy-title">No son maquetas. Ya está funcionando en negocios de Torreón.</h2>
+    </div>
+    <ul class="gallery" id="gallery">
+      <li class="reveal"><button type="button" data-lightbox="assets/img/proyectos/el-camaron-culichi.webp" data-caption="El Camarón Culichi: menú y Wi-Fi con QR y NFC">
+        <img src="assets/img/proyectos/el-camaron-culichi.webp" alt="Tarjeta de menú y Wi-Fi frente al restaurante El Camarón Culichi" width="1000" height="1333" loading="lazy">
+        <span><b>El Camarón Culichi</b>Menú y Wi-Fi con QR y NFC</span>
+      </button></li>
+      <li class="reveal"><button type="button" data-lightbox="assets/img/proyectos/le-smash.webp" data-caption="Le Smash: pedidos desde la mesa">
+        <img src="assets/img/proyectos/le-smash.webp" alt="Base de madera con código QR de la mesa 1 frente al letrero de Le Smash" width="1000" height="1268" loading="lazy">
+        <span><b>Le Smash</b>Pedidos desde la mesa</span>
+      </button></li>
+      <li class="reveal"><button type="button" data-lightbox="assets/img/proyectos/muelle-817.webp" data-caption="Muelle 817: menú y Wi-Fi con QR y NFC">
+        <img src="assets/img/proyectos/muelle-817.webp" alt="Tarjeta de menú y Wi-Fi frente al restaurante Muelle 817" width="1000" height="1333" loading="lazy">
+        <span><b>Muelle 817</b>Menú y Wi-Fi con QR y NFC</span>
+      </button></li>
+      <li class="reveal"><button type="button" data-lightbox="assets/img/proyectos/distrito-michelado.webp" data-caption="Distrito Michelado: tarjetas de menú y Wi-Fi en cada mesa">
+        <img src="assets/img/proyectos/distrito-michelado.webp" alt="Tarjetas de menú y Wi-Fi sobre una mesa dentro de Distrito Michelado" width="1000" height="1333" loading="lazy">
+        <span><b>Distrito Michelado</b>Tarjetas de menú y Wi-Fi</span>
+      </button></li>
+      <li class="reveal"><button type="button" data-lightbox="assets/img/proyectos/shoku.webp" data-caption="Shoku Sushi Bar: menú y Wi-Fi con QR y NFC">
+        <img src="assets/img/proyectos/shoku.webp" alt="Tarjeta de menú y Wi-Fi frente a Shoku Sushi Bar" width="1000" height="1333" loading="lazy">
+        <span><b>Shoku Sushi Bar</b>Menú y Wi-Fi con QR y NFC</span>
+      </button></li>
+      <li class="reveal"><button type="button" data-lightbox="assets/img/proyectos/hot-papas.webp" data-caption="Hot Papas: menú con QR en la barra">
+        <img src="assets/img/proyectos/hot-papas.webp" alt="Letrero con código QR para ver el menú en la barra de Hot Papas" width="1000" height="1311" loading="lazy">
+        <span><b>Hot Papas</b>Menú con QR en la barra</span>
+      </button></li>
+    </ul>
+  </section>
+
+  <!-- PAQUETES -->
+  <section class="section" id="paquetes" aria-labelledby="paq-title">
+    <div class="wrap">
+      <p class="tag reveal">Paquetes</p>
+      <h2 class="reveal" id="paq-title">Empieza con tu menú digital y crece cuando quieras.</h2>
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>Innovador</h3>
+          <p class="plan__price">$3,500 <small>MXN + $500/mes</small></p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check"/></svg>40 tarjetas NFC</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>1 página web personalizada</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Base de acrílico</li>
+          </ul>
+          <a class="btn btn--ghost" href="#diagnostico" data-package="Paquete Innovador">Elegir Innovador</a>
+        </article>
+        <article class="plan plan--main reveal">
+          <p class="plan__flag">Más tarjetas</p>
+          <h3>Futurista</h3>
+          <p class="plan__price">$5,500 <small>MXN + $500/mes</small></p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check"/></svg>80 tarjetas NFC</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>1 página web personalizada</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Base de acrílico</li>
+          </ul>
+          <a class="btn" href="#diagnostico" data-package="Paquete Futurista">Elegir Futurista</a>
+        </article>
+        <article class="plan reveal">
+          <h3>A tu medida</h3>
+          <p class="plan__price plan__price--text">Cotización personalizada</p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check"/></svg>Atención con IA</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Punto de venta</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Apps, agendas y más</li>
+          </ul>
+          <a class="btn btn--ghost" href="#diagnostico" data-package="Sistema a la medida">Cotizar mi sistema</a>
+        </article>
+      </div>
+      <div class="included reveal">
+        <h3>Tu solución digital incluye</h3>
+        <ul>
+          <li>Menú digital</li>
+          <li>Página web personalizada</li>
+          <li>Acceso QR y NFC</li>
+          <li>Diseño moderno e interactivo</li>
+          <li>Soporte 24/7</li>
+          <li>Mantenimiento y actualización</li>
+          <li>Enlace directo a redes sociales</li>
+          <li>Reseñas y encuestas desde Google</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIANZA -->
+  <section class="section trust" id="nosotros" aria-labelledby="trust-title">
+    <div class="wrap trust__grid">
+      <div>
+        <p class="tag reveal">Somos de Torreón</p>
+        <h2 class="reveal" id="trust-title">Una empresa de la región, con la que puedes hablar.</h2>
+        <p class="reveal">Somos de Torreón, Coahuila. Atendemos proyectos en la ciudad y en cualquier parte de México, y te mostramos cómo puede funcionar en tu negocio antes de que decidas.</p>
+        <div class="flyers reveal">
+          <button type="button" data-lightbox="assets/img/ui/folleto-que-es.webp" data-caption="Folleto: ¿Qué es Easy TAP?">
+            <img src="assets/img/ui/folleto-que-es.webp" alt="Folleto: ¿Qué es Easy TAP?" width="1320" height="982" loading="lazy">
+            <span>¿Qué es Easy TAP?</span>
+          </button>
+          <button type="button" data-lightbox="assets/img/ui/folleto-soluciones.webp" data-caption="Folleto: Tú lo imaginas, nosotros lo hacemos realidad">
+            <img src="assets/img/ui/folleto-soluciones.webp" alt="Folleto: Tú lo imaginas, nosotros lo hacemos realidad" width="1170" height="1445" loading="lazy">
+            <span>Soluciones a la medida</span>
+          </button>
+        </div>
+      </div>
+      <ul class="pledges">
+        <li class="reveal"><svg class="ic ic--lg"><use href="#i-shield"/></svg><div><h3>100% nuevo</h3><p>Desarrollos desde cero, con tecnología actualizada.</p></div></li>
+        <li class="reveal"><svg class="ic ic--lg"><use href="#i-code"/></svg><div><h3>100% personalizado</h3><p>A la medida de tus necesidades y de tu negocio.</p></div></li>
+        <li class="reveal"><svg class="ic ic--lg"><use href="#i-lock"/></svg><div><h3>Seguro y confiable</h3><p>Protegemos tu información y la de tu negocio.</p></div></li>
+        <li class="reveal"><svg class="ic ic--lg"><use href="#i-support"/></svg><div><h3>Soporte continuo</h3><p>Estamos contigo antes, durante y después del proyecto.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DIAGNÓSTICO -->
+  <section class="section contact" id="diagnostico" aria-labelledby="diag-title">
+    <div class="wrap contact__grid">
+      <div class="contact__intro">
+        <p class="tag">Cotiza sin compromiso</p>
+        <h2 id="diag-title">Cuéntanos qué le falta a tu negocio.</h2>
+        <p>Antes de hablar, queremos entender tu operación. Responde unas preguntas rápidas y llegamos a WhatsApp con tu caso listo, sin tener que explicarlo dos veces.</p>
+        <ol class="contact__steps">
+          <li>Llenas el formulario</li>
+          <li>Se abre WhatsApp con tus respuestas</li>
+          <li>Presionas enviar y te damos seguimiento</li>
+        </ol>
+      </div>
+
+      <div class="wizard">
+        <form id="diagForm" novalidate>
+          <ol class="progress" aria-hidden="true">
+            <li class="is-on"><span>Tu negocio</span></li>
+            <li><span>Tus retos</span></li>
+            <li><span>Contacto</span></li>
+          </ol>
+          <p class="visually-hidden" id="stepStatus" aria-live="polite">Paso 1 de 3</p>
+
+          <!-- Paso 1 -->
+          <fieldset class="step is-on" data-step="0">
+            <legend tabindex="-1">Háblanos de tu negocio</legend>
+
+            <div class="field">
+              <label for="f-negocio">Nombre del negocio</label>
+              <input id="f-negocio" name="negocio" type="text" autocomplete="organization" required maxlength="80" placeholder="Ej. Taquería Sinaloa">
+              <p class="err" id="e-negocio"></p>
+            </div>
+
+            <div class="field" data-group="giro" data-required>
+              <p class="field__label" id="l-giro">Giro del negocio</p>
+              <div class="chips" role="radiogroup" aria-labelledby="l-giro">
+                <label class="chip"><input type="radio" name="giro" value="Restaurante o cafetería"><span>Restaurante o cafetería</span></label>
+                <label class="chip"><input type="radio" name="giro" value="Bar o antro"><span>Bar o antro</span></label>
+                <label class="chip"><input type="radio" name="giro" value="Comida rápida o food truck"><span>Comida rápida o food truck</span></label>
+                <label class="chip"><input type="radio" name="giro" value="Salud o belleza"><span>Salud o belleza</span></label>
+                <label class="chip"><input type="radio" name="giro" value="Tienda o comercio"><span>Tienda o comercio</span></label>
+                <label class="chip"><input type="radio" name="giro" value="Servicios profesionales"><span>Servicios profesionales</span></label>
+                <label class="chip"><input type="radio" name="giro" value="Industria o manufactura"><span>Industria o manufactura</span></label>
+                <label class="chip"><input type="radio" name="giro" value="Otro"><span>Otro</span></label>
+              </div>
+              <p class="err" id="e-giro"></p>
+              <input class="field__extra" id="f-giro-otro" name="giroOtro" type="text" maxlength="60" placeholder="¿Cuál es tu giro?" aria-label="Escribe tu giro" hidden>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-ciudad">Ciudad</label>
+                <select id="f-ciudad" name="ciudad">
+                  <option>Torreón</option>
+                  <option>Gómez Palacio</option>
+                  <option>Lerdo</option>
+                  <option>Otra ciudad</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-sucursales">Sucursales</label>
+                <select id="f-sucursales" name="sucursales">
+                  <option>1</option>
+                  <option>2 a 3</option>
+                  <option>4 o más</option>
+                  <option>Aún no abro</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Paso 2 -->
+          <fieldset class="step" data-step="1" hidden>
+            <legend tabindex="-1">¿Qué problemas tienes hoy con la tecnología?</legend>
+
+            <div class="field" data-group="retos" data-required>
+              <p class="field__label" id="l-retos">Elige todos los que apliquen</p>
+              <div class="chips" role="group" aria-labelledby="l-retos">
+                <label class="chip"><input type="checkbox" name="retos" value="Se me pierden llamadas o WhatsApp"><span>Se me pierden llamadas o WhatsApp</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="Pedidos a mano o errores en comandas"><span>Pedidos a mano o errores en comandas</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="Mi menú es difícil de actualizar"><span>Mi menú es difícil de actualizar</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="No tengo página web o no aparezco en Google"><span>No tengo web o no aparezco en Google</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="No controlo ventas ni inventario"><span>No controlo ventas ni inventario</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="Citas y reservas desordenadas"><span>Citas y reservas desordenadas</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="Tengo pocas reseñas en Google"><span>Tengo pocas reseñas en Google</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="Mis sistemas no se conectan entre sí"><span>Mis sistemas no se conectan entre sí</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="Mi sistema actual es lento o falla"><span>Mi sistema actual es lento o falla</span></label>
+                <label class="chip"><input type="checkbox" name="retos" value="Otro problema"><span>Otro</span></label>
+              </div>
+              <p class="err" id="e-retos"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-detalle">Cuéntanos con tus palabras <small>(opcional)</small></label>
+              <textarea id="f-detalle" name="detalle" rows="3" maxlength="500" placeholder="Ej. Los fines de semana no alcanzamos a contestar el teléfono y perdemos pedidos."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="f-usa">¿Qué usas hoy para administrar tu negocio?</label>
+              <select id="f-usa" name="usa">
+                <option>Libreta o papel</option>
+                <option>Excel</option>
+                <option>Un punto de venta</option>
+                <option>Varios sistemas</option>
+                <option>Nada todavía</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Paso 3 -->
+          <fieldset class="step" data-step="2" hidden>
+            <legend tabindex="-1">Ya casi. ¿Con quién hablamos?</legend>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-nombre">Tu nombre</label>
+                <input id="f-nombre" name="nombre" type="text" autocomplete="name" required maxlength="60">
+                <p class="err" id="e-nombre"></p>
+              </div>
+              <div class="field">
+                <label for="f-tel">Tu WhatsApp (10 dígitos)</label>
+                <input id="f-tel" name="tel" type="tel" inputmode="numeric" autocomplete="tel-national" required maxlength="16" placeholder="871 000 0000">
+                <p class="err" id="e-tel"></p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-busca">¿Qué te interesa?</label>
+                <select id="f-busca" name="busca">
+                  <option value="Aún no lo sé, necesito asesoría">Aún no lo sé, necesito asesoría</option>
+                  <option>Paquete Innovador</option>
+                  <option>Paquete Futurista</option>
+                  <option>Sistema a la medida</option>
+                  <option>Atención con IA</option>
+                  <option>Punto de venta</option>
+                  <option>Página web</option>
+                  <option>Aplicación móvil</option>
+                  <option>Agenda de citas</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-cuando">¿Para cuándo?</label>
+                <select id="f-cuando" name="cuando">
+                  <option>Lo antes posible</option>
+                  <option>Este mes</option>
+                  <option>En los próximos meses</option>
+                  <option>Solo estoy explorando</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="preview">
+              <p class="preview__title"><svg class="ic"><use href="#i-whatsapp"/></svg>Este mensaje se abrirá en WhatsApp</p>
+              <pre id="preview"></pre>
+            </div>
+
+            <div class="field" data-group="aviso" data-required>
+              <label class="consent">
+                <input type="checkbox" name="aviso" id="f-aviso">
+                <span>Acepto el <button class="linklike" type="button" data-open-privacy>aviso de privacidad</button>.</span>
+              </label>
+              <p class="err" id="e-aviso"></p>
+            </div>
+          </fieldset>
+
+          <!-- Listo -->
+          <div class="done" id="done" hidden tabindex="-1">
+            <svg class="ic ic--lg"><use href="#i-whatsapp"/></svg>
+            <h3>Tu mensaje ya está listo en WhatsApp</h3>
+            <p>Solo falta que presiones <b>enviar</b> en la conversación. Si no se abrió, usa este botón.</p>
+            <a class="btn btn--wa" id="waAgain" href="#" target="_blank" rel="noopener">Abrir WhatsApp <svg class="ic"><use href="#i-whatsapp"/></svg></a>
+            <button class="linklike" id="restart" type="button">Llenar otro formulario</button>
+          </div>
+
+          <div class="wizard__nav" id="wizNav">
+            <button class="btn btn--ghost" id="prev" type="button" hidden>Atrás</button>
+            <button class="btn" id="next" type="button">Continuar <svg class="ic"><use href="#i-arrow"/></svg></button>
+            <button class="btn btn--wa" id="send" type="submit" hidden>Enviar por WhatsApp <svg class="ic"><use href="#i-whatsapp"/></svg></button>
+          </div>
+        </form>
+        <noscript><p class="noscript">Para llenar este formulario necesitas activar JavaScript en tu navegador.</p></noscript>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq">
+      <div>
+        <p class="tag reveal">Preguntas</p>
+        <h2 class="reveal" id="faq-title">Lo que más nos preguntan.</h2>
+      </div>
+      <div class="faq__list">
+        <details class="reveal">
+          <summary>¿Mis clientes tienen que descargar una app?</summary>
+          <p>No. Acercan su celular a la tarjeta NFC o escanean el QR, y tu página se abre en el navegador.</p>
+        </details>
+        <details class="reveal">
+          <summary>¿Y si el celular de mi cliente no tiene NFC?</summary>
+          <p>Cada tarjeta también lleva código QR, que se escanea con la cámara del teléfono.</p>
+        </details>
+        <details class="reveal">
+          <summary>¿Puedo cambiar precios y platillos?</summary>
+          <p>Sí. Tu menú digital se actualiza al instante y no tienes que volver a imprimir nada.</p>
+        </details>
+        <details class="reveal">
+          <summary>¿Solo trabajan con restaurantes?</summary>
+          <p>No. También trabajamos con otros giros, como belleza y perfumería. Hacemos páginas web, apps, agendas y sistemas para cualquier tipo de negocio.</p>
+        </details>
+        <details class="reveal">
+          <summary>¿Atienden fuera de Torreón?</summary>
+          <p>Sí. Somos de Torreón, Coahuila, y atendemos proyectos en cualquier parte de México.</p>
+        </details>
+        <details class="reveal">
+          <summary>¿Por qué piden llenar un formulario antes de WhatsApp?</summary>
+          <p>Para llegar a la conversación conociendo tu giro y tus retos, y darte una respuesta útil desde el primer mensaje. Te toma un par de minutos.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <div class="footer__brand">
+      <img src="assets/img/ui/logo-easytap.webp" alt="Easy TAP" width="128" height="74" loading="lazy">
+      <p>El futuro de tu negocio empieza con un simple TAP.</p>
+    </div>
+    <nav aria-label="Pie de página">
+      <a href="#ia">Atención con IA</a>
+      <a href="#servicios">Soluciones</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#diagnostico">Cotizar proyecto</a>
+    </nav>
+    <div class="footer__loc">
+      <p><svg class="ic"><use href="#i-pin"/></svg>Torreón, Coahuila, México</p>
+      <button class="linklike" type="button" data-open-privacy>Aviso de privacidad</button>
+    </div>
+  </div>
+  <p class="wrap footer__legal">© <span id="year">2026</span> Easy TAP. Todos los derechos reservados. Los logotipos pertenecen a sus respectivos dueños.</p>
+</footer>
+
+<a class="float-cta" id="floatCta" href="#diagnostico">
+  <svg class="ic"><use href="#i-whatsapp"/></svg><span>Cotiza sin compromiso</span>
+</a>
+
+<!-- Visor de imágenes -->
+<dialog class="lightbox" id="lightbox" aria-label="Imagen ampliada">
+  <button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="ic"><use href="#i-close"/></svg></button>
+  <figure>
+    <img id="lightboxImg" src="data:," alt="">
+    <figcaption id="lightboxCap"></figcaption>
+  </figure>
+</dialog>
+
+<!-- Aviso de privacidad -->
+<dialog class="privacy" id="privacy" aria-labelledby="privacy-title">
+  <button class="dialog-close" type="button" data-close aria-label="Cerrar"><svg class="ic"><use href="#i-close"/></svg></button>
+  <h2 id="privacy-title">Aviso de privacidad</h2>
+  <p>Easy TAP, con ubicación en Torreón, Coahuila, usa los datos que escribes en este formulario (nombre, teléfono y la información de tu negocio) únicamente para contactarte y preparar una propuesta de solución.</p>
+  <p>Esta página no guarda tus respuestas. Se arman en tu propio dispositivo y solo llegan a Easy TAP cuando tú presionas enviar en WhatsApp. A partir de ese momento también aplican las condiciones de WhatsApp.</p>
+  <p>No vendemos ni compartimos tus datos con terceros para publicidad. Puedes pedir el acceso, la corrección, la cancelación o la oposición al uso de tus datos escribiéndonos en esa misma conversación.</p>
+</dialog>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
